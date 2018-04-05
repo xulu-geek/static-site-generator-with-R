@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<title>Simple Example on a Decision Rules, Admissibility, etc.</title>
+
+
+<link rel="stylesheet" href="css/fonts.css" media="all">
+<link rel="stylesheet" href="css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo.png"
+         width="50"
+         height="50"
+         alt="logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="index.html">Home</a></li>
+
+    
+    <li><a href="post.html">Sample Post</a></li>
+
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Simple Example on a Decision Rules, Admissibility, etc.</h1>
+
+    
+
+    <div class="article-content">
+      <p>We start with <span class="math inline">\(\theta&gt;0\)</span> and <span class="math inline">\(E[X|\theta]=\theta\)</span> and <span class="math inline">\(Var[X|\theta]=\theta^2\)</span></p>
+<p>We have a class of decision rules that are <span class="math inline">\(S=\{\delta_c(X)=cX, 0 &lt; c &lt; 1\}\)</span></p>
+<p>and we're give the standard squared loss funciton <span class="math inline">\(L(\theta,a) = (\theta - a)^2\)</span></p>
+<p>To find a decision rule in <span class="math inline">\(S\)</span> that is admissible means finding a decision rule <span class="math inline">\(\delta_{c}\)</span> for there exists no other decision rule that is R-better than <span class="math inline">\(\delta_{c}\)</span></p>
+<p>We can find such a decision rule by finding <span class="math inline">\(\delta_{c}\)</span> for which the Risk is the minimum possible.</p>
+<p>We know that the Bayesian risk for a decsion rule is defined by <span class="math inline">\(R(\theta,a)=E[L(\theta,a)]\)</span></p>
+<p>Thus if <span class="math inline">\(L(\theta,a) = (\theta - a)^2\)</span>, we can substitute that back into the risk formula and get: <span class="math inline">\(R(\theta,a)=E[(\theta - a)^2]\)</span></p>
+<p>Further we know that <span class="math inline">\(a\)</span> is of the form <span class="math inline">\(\delta_c(X)=cX\)</span> for <span class="math inline">\(c \in (0,1)\)</span> and if we also plug that in we get <span class="math inline">\(R(\theta,\delta_{c})=E[(\theta - cX)^2]\)</span></p>
+<p>so we can derive</p>
+<span class="math display">\[\begin{align}
+R(\theta,\delta_{c})=E[(\theta - cX)^2]\\
+=E[\theta^2 -2c\theta X +(cX)^2]\\
+=\theta^2 - 2c\theta E[X] +c^2E[X^2]
+\end{align}\]</span>
+<p>Now we can use the identity that <span class="math inline">\(Var[\zeta] = E[\zeta^2] - E[\zeta]^2\)</span>, which if we re-arrange, we get <span class="math inline">\(E[\zeta^2] = Var[\zeta] + E[\zeta]^2\)</span>.</p>
+<p>Now let us set <span class="math inline">\(\zeta=\theta -cX\)</span> and put that in our re-arranged identity and we get (Note: <span class="math inline">\(Var(X+c)=Var(X)\)</span>, and where <span class="math inline">\(Var(cX)=c^2Var(X)\)</span> where c is a constant):</p>
+<span class="math display">\[\begin{align}
+\require{cancel}
+E[\zeta^2] = Var[\zeta] + E[\zeta]^2 \\
+E[(\theta -cX)^2] = Var[\theta -cX] + E[\theta -cX]^2 \\
+E[\theta^2-2cX\theta +c^2X^2] = c^2Var[X] + (E[\theta] -cE[X])^2 \\
+E[\theta^2]-2c\theta E[X]+c^2E[X^2] = c^2Var[X] + (\theta -cE[X])^2 \\
+\theta^2-2c\theta E[X]+c^2E[X^2] = c^2Var[X] + \theta^2 -2c\theta E[X] +c^2E[X]^2 \\
+\cancel{\theta^2} \bcancel{-2c\theta E[X]}+c^2E[X^2] = c^2Var[X] + \cancel{\theta^2} \bcancel{-2c\theta E[X]} +c^2E[X]^2 \\
+\xcancel{c^2}E[X^2] = \xcancel{c^2}Var[X] +\xcancel{c^2}E[X]^2 \\
+E[X^2] = Var[X] + E[X]^2 
+\end{align}\]</span>
+<p>next let us substitute it back into our previous result:</p>
+<span class="math display">\[\begin{align}
+R(\theta,\delta_{c})=\theta^2 - 2c\theta E[X] +c^2E[X^2] \\
+=\theta^2 - 2c\theta E[X] + c^2(Var[X] + E[X]^2) \\
+=\theta^2 - 2c\theta E[X] + c^2Var[X] + c^2E[X]^2 
+\end{align}\]</span>
+<p>Now we plug back <span class="math inline">\(E[X|\theta]=\theta\)</span> and <span class="math inline">\(Var[X|\theta]=\theta^2\)</span> into the previous result:</p>
+<span class="math display">\[\begin{align}
+R(\theta,\delta_{c})=\theta^2 - 2c\theta E[X] + c^2Var[X] + c^2E[X]^2 \\
+=\theta^2 - 2c\theta \cdot \theta + c^2\theta^2 + c^2(\theta)^2  \\
+=\theta^2 - 2c\theta^2 + 2c^2\theta^2   \\
+=\theta^2
+\end{align}\]</span>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            &copy; Mathjab Test 2018
+          </li>
+          
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

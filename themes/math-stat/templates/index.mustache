@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>{{ siteTitle }}</title>
+
+  {{# headers }}
+    {{{ . }}}
+  {{/ headers }}
+
+  <link rel="stylesheet" href="/static/css/fonts.css" media="all">
+  <link rel="stylesheet" href="/static/css/main.css" media="all">
+
+
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <img src="/static/images/{{ logo.url }}"
+             width="{{ logo.width }}"
+             height="{{ logo.height}}"
+             alt="{{ logo.alt}}">
+      </a>
+
+      <ul class="nav-links">
+
+        {{# main_menu }}
+          <li><a href="{{ url }}">{{ name }}</a></li>
+        {{/ main_menu }}
+
+
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <main class="content" role="main">
+
+
+    <article class="article">
+      <div class="article-content">
+        {{# content }}
+          {{{ . }}}
+        {{/content}}
+
+      </div>
+    </article>
+
+
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-links">
+      <li>
+        © Arman Anwar 2000 -- Today
+      </li>
+
+    </ul>
+  </footer>
+
+</div>
+
+
+</body>
+</html>
+

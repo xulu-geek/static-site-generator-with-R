@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ siteTitle }} | {{ title }}</title>
+      {{# headers }}
+        {{{ . }}}
+      {{/ headers }}
+    <link rel="shortcut icon" href="/static/images/728358_writing_512x512.png">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" media="all">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="/static/cpager/css/cPager.css" media="all">
+    <script type="text/javascript" src="/static/cpager/js/cPager.js"></script>
+  </head>
+  <body>
+    <div class="row justify-content-center head-row no-gutters">
+      <header id="header col">
+        <div class="container header-container">
+          <div class="mob-header">
+            <div class="mob-logo">
+              <a href="/"><img src="/static/images/A-logo.svg" class="A-logo"></a>
+              <div class="the-name">Arman Anwar</div>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="/content/pages/about">About</a></li>
+                <li ><a href="{{socialMedia.gitHub}}">GitHub</a></li>
+                <li ><a href="{{socialMedia.linkedIn}}">LikedIn</a></li>
+                <li ><a href="/content/pages/blogs">Random</a></li>
+                <li ><a href="{{socialMedia.twitter}}">Twitter</a></li>
+                {{# dropDownMenu }}
+                  <li><a class="" href="{{ url }}">{{ name }}</a></li>
+                {{/ dropDownMenu }}
+              </ul>
+            </div>
+          </div>
+          <div class="row justify-content-between align-items-center no-gutters header-row">
+	        <div class="header-titles"><a href="/content/pages/about">About</a></div>
+	        <div class="header-titles"><a href="{{socialMedia.gitHub}}">GitHub</a></div>
+	        <div class="header-titles"><a href="{{socialMedia.linkedIn}}">LikedIn</a></div>
+	        <div class="header-titles img"><a href="/"><img src="/static/images/{{ logo.url }}" class="A-logo"></a></div>
+	        <div class="header-titles push-1"><a href="/content/pages/blogs">Random</a></div>
+	        <div class="header-titles"><a href="{{socialMedia.twitter}}">Twitter</a></div>
+            <div class="dropdown">
+              <div class="dots dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {{# dropDownMenu }}
+                  <li><a class="dropdown-item dropdown-child" href="{{ url }}">{{ name }}</a></li>
+                {{/ dropDownMenu }}
+              </ul>
+            </div>
+          </div>
+          <div class="row justify-content-center name-holder">
+            <div class="the-name">Arman Anwar</div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <!--Wrapper-->
+    <div class="row justify-content-center rm-zero">
+      <main class="content" role="main">
+        <div class="container container-wrapper container-posts col-md-7 col-sm-12 col-xs-12 mid-cont">
+          <div class="row justify-content-center">
+            <div class="triangle align-items-start"></div>
+          </div>
+          <div class="col">
+            {{# content }}
+              {{{ . }}}
+            {{/content}}
+            <div class="posts-list posts-list-pinned text-left">
+              <!--wrap single list item into a container-->
+              {{# pinnedPost }}
+              <div class="post-item post-item-pinned">
+                <div class="post-title">
+                  <a href="/content/posts/{{ rawFileName }}" class="post-link heading-wrapper post-heading">{{ title }}</a>
+                </div>
+                <div class="teaser row no-gutters">
+                  <span class="teaser-date">{{ date }}</span>
+                  <div class="full-width">
+                    <p class="teaser-txt text-left">{{ teaser }}<a href="/content/posts/{{ rawFileName }}" class="more"><span class="more">...read more</span></a></p>
+                  </div>
+                  <div class="teaser-tags">{{# tags }} <span>#{{{ . }}}</span> {{/tags}}</div>
+
+                </div>
+              </div>
+              {{/pinnedPost}}
+            </div>
+
+            <div class="posts-list posts-list-unpinned text-left">
+              {{# upinnedPost }}
+                <div class="post-item unpinned-item">
+                  <div class="post-title">
+                    <a href="/content/posts/{{ rawFileName }}" class="post-link heading-wrapper post-heading">{{ title }}</a>
+                  </div>
+                  <div class="teaser row no-gutters">
+                    <span class="teaser-date">{{ date }}</span>
+                    <div class="full-width">
+                      <p class="teaser-txt text-left">{{ teaser }}<a href="/content/posts/{{ rawFileName }}" class="more"><span class="more">...read more</span></a></p>
+                    </div>
+                    <div class="teaser-tags">{{# tags }} <span>#{{{ . }}}</span> {{/tags}}</div>
+                  </div>
+                </div>
+              {{/upinnedPost}}
+            </div>
+		    <div class="col-xs-12 no-padding">
+              <div class="turn-page" id="pager"></div>
+		    </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer id="footer">
+      <img src="/static/images/footer1.png">
+    </footer>
+    <!--script src="/static/js/jquery-3.js"></script-->
+    <!--script src="/static/js/bootstrap.js"></script-->
+    <script src="/static/js/scrollToView.js"></script>
+    <script src="/static/js/DotsMenuDropdown.js"></script>
+	
+    {{#pager}}
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $(this).cPager({
+            pageSize: {{perPageItem}},
+            pageid: "pager",
+            itemClass: "unpinned-item"
+          });
+        });
+      </script>
+    {{/pager}}
+  </body>
+</html>
+

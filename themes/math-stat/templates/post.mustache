@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>{{ siteTitle }} | {{ title }}</title>
+
+  {{# headers }}
+  {{{ . }}}
+  {{/ headers }}
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/fonts.css" media="all">
+  <link rel="stylesheet" href="/static/css/main.css" media="all">
+  <link rel="stylesheet" href="/static/jssocials/css/jssocials.css" media="all">
+  <link rel="stylesheet" href="/static/jssocials/css/jssocials-theme-flat.css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <img src="/static/images/{{ logo.url }}"
+             width="{{ logo.width }}"
+             height="{{ logo.height}}"
+             alt="{{ logo.alt}}">
+      </a>
+
+      <ul class="nav-links">
+
+        {{# main_menu }}
+        <li><a href="{{ url }}">{{ name }}</a></li>
+        {{/ main_menu }}
+
+
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <main class="content" role="main">
+
+
+    <article class="article">
+      <div class="article-content">
+        {{# content }}
+        {{{ . }}}
+        {{/content}}
+
+      </div>
+      <div class="share-wrapper">
+        <div class="share-header">
+          <label class="active">Share</label>
+        </div>
+        <div id="share">
+
+        </div>
+      </div>
+    </article>
+
+    {{#commentEnable}}
+      <div id="comment-warpper" class="comment-warpper">
+        <div id="disqus_thread"></div>
+        <script>
+
+          /**
+           *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+           *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+           */
+          var disqus_config = function () {
+            this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+            //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+          };
+          //console.log(location.pathname);
+
+          (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://http-armanin-space-xululabs-us.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      </div>
+    {{/commentEnable}}
+    {{^commentEnable}}
+
+    {{/commentEnable}}
+
+
+
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-links">
+      <li>
+        © Arman Anwar 2000 -- Today
+      </li>
+
+    </ul>
+  </footer>
+
+</div>
+<script type="text/javascript" src="/static/jssocials/js/jssocials.min.js"></script>
+    <script>
+        $("#share").jsSocials({
+			shareIn: "popup",
+			showLabel: false,
+            showCount: false,
+            shares: ["facebook", "twitter", "googleplus", "linkedin"]
+        });
+    </script>
+
+</body>
+</html>
+

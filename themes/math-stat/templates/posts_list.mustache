@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>{{ siteTitle }} | {{ title }}</title>
+
+  {{# headers }}
+    {{{ . }}}
+  {{/ headers }}
+
+  <link rel="stylesheet" href="/static/css/fonts.css" media="all">
+  <link rel="stylesheet" href="/static/css/main.css" media="all">
+  <link rel="stylesheet" href="/static/cpager/css/cPager.css" media="all">
+  <script type="text/javascript" src="/static/cpager/js/cPager.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <img src="/static/images/{{ logo.url }}"
+             width="{{ logo.width }}"
+             height="{{ logo.height}}"
+             alt="{{ logo.alt}}">
+      </a>
+
+      <ul class="nav-links">
+
+        {{# main_menu }}
+        <li><a href="{{ url }}">{{ name }}</a></li>
+        {{/ main_menu }}
+
+
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <main class="content" role="main">
+
+
+    <article class="article">
+      <div class="article-content">
+        {{# content }}
+          {{{ . }}}
+        {{/content}}
+
+        <div class="blog-list-wrapper blog-list-wrapper-pinned">
+          {{# pinnedPost }}
+            <div class="blog-list-item blog-list-item-pinned"> 
+              <div class="glog-item-title"><a href="/content/posts/{{ rawFileName }}">{{ title }}</a></div>
+              <div class="blog-item-date"><span>{{ date }}</span></div>
+              <div class="blog-item-teaser">{{ teaser }}</div>		
+            </div>
+          {{/pinnedPost}}
+        </div>
+        
+        <div class="blog-list-wrapper">
+          {{# upinnedPost }}
+            <div class="blog-list-item unpinned-item">
+              <div class="glog-item-title"><a href="/content/posts/{{ rawFileName }}">{{ title }}</a></div>
+              <div class="blog-item-date"><span>{{ date }}</span></div>
+              <div class="blog-item-teaser">{{ teaser }}</div>		
+            </div>
+          {{/upinnedPost}}
+        </div>
+        <div class="turn-page" id="pager"></div>
+
+      </div>
+    </article>
+
+
+  </main>
+
+  <footer class="footer">
+    <ul class="footer-links">
+      <li>
+        © Arman Anwar 2000 -- Today
+      </li>
+
+    </ul>
+  </footer>
+
+</div>
+{{#pager}}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(this).cPager({
+      pageSize: {{perPageItem}},
+      pageid: "pager",
+      itemClass: "unpinned-item"
+    });
+  });
+</script>
+{{/pager}}
+{{^pager}}
+  No comments :(
+{{/pager}}
+
+</body>
+</html>
+
