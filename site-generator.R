@@ -115,6 +115,7 @@ for(i in 1:length(posts)) {
     data <- list( siteTitle = tomlConfig.list$title
                   , socialMedia = tomlConfig.list$socialMedia
                   , dropDownMenu = tomlConfig.list$dropDownMenu
+                  , disqusShortname = tomlConfig.list$disqusShortname
                   , logo = tomlConfig.list$params$logo
                   , headers = output$header
                   , content = output$body

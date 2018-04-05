@@ -304,7 +304,7 @@ body p,
 div#share {
   float: left;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 0 0 15px;
 }
 div.share-header {
   border-bottom: 2px solid #d8d8d8;
@@ -312,9 +312,11 @@ div.share-header {
   height: 26px;
   padding: 0;
   margin: auto 15px;
+  text-align: right;
+  max-width: 97.5%;
 }
 div.share-header label.active {
-  border-bottom: 2px solid rgb(51, 122, 183);
+  border-bottom: 2px solid rgb(18, 19, 19);
 }
 
 .jssocials-share-link {
@@ -488,6 +490,7 @@ img.logo-new {
   margin-top: 55px;
 }
 .icon-wrap {
+  display: none;
   margin-top: 20px;
   cursor: pointer;
 }
@@ -550,12 +553,20 @@ img.logo-new {
   margin-left: -10px;
   pointer-events: none;
 }
-/*.jssocials-share .jssocials-share-link {
+.jssocials-shares {
+  float: right;
+}
+.jssocials-shares .jssocials-share:last-child {
+  margin-right: 0.6em;
+}
+.jssocials-share .jssocials-share-link {
   background: transparent !important;
+  padding: .5em 0.3em;
 }
 .jssocials-share .jssocials-share-logo {
   color: #000;
-}*/
+  font-size: 1.9em;
+}
 @-moz-document url-prefix() { 
   .header-titles {
     padding-right: 93px;

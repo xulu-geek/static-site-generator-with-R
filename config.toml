@@ -1,8 +1,6 @@
-languageCode = "en-us"
 title = "Arman Anwar -- Lost in Space"
 theme = "lembas"
-googleAnalytics = ""
-disqusShortname = ""
+disqusShortname = "http-armanin-space-xululabs-us"
 
 [socialMedia]
   gitHub = "https://github.com/armaninspace"
