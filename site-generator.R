@@ -1,17 +1,17 @@
-
-#setwd("/var/www/static_site.com")
 source("./libs/plugin-rmarkdown.R")
 library(configr)
 library(whisker)
 library(markdown)
 library(xml2)
 library(yaml)
+
 #get configration from config
 tomlConfig.list <- read.config("config.toml")
 structureChanged <- FALSE
+
 #argument for rebuild
-#args = commandArgs(trailingOnly=TRUE)
-args <- list("build-clean")
+args = commandArgs(trailingOnly=TRUE)
+
 if (length(args) > 0) {
   
   if(args[1] == "build-clean"){
